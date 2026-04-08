@@ -62,6 +62,20 @@ button {
   height: 100vh;
   background-color: #0f0f0f;
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+svg {
+  width: 40vw;
+  path {
+    fill: rgba(168, 19, 19, 0.364);
+    stroke: rgb(168, 19, 19);
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+  }
+
 }
 
 .bgMonstro {

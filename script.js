@@ -26,30 +26,29 @@ gsap.from("picture:nth-child(1)", { // movimento do monstro para vertical
 
 gsap.from(".card", {
     opacity: 0,
-    duration: 1,
-    stagger: .3,
-    y: 30,
-    filter: "blur(20px)",
+    filter: "blur(10px)",
+    stagger: 0.3,
     scrollTrigger: {
         trigger: ".cards",
-        markers: true,
-        start: "0% 70%"
-    }
-})
+        start: "0% 80%",
+        end: "100% 70%",
+        scrub: true,
+    },
+});
 
 gsap.from(".secaoObrigado ul li", {
     opacity: 0,
     x: 40,
     duration: 1,
     filter: "blur(10px)",
-    stagger: .03,
+    stagger: .05,
 
     scrollTrigger: {
         trigger: ".secaoObrigado ul",
         markers: false,
         start: "0% 80%",
         end: "100% 50%",
-        scrub: true
+        scrub: true,
     }
 })
 
@@ -69,16 +68,34 @@ grupoTextoSplit.forEach(textoUnicoSplit => {
 
     gsap.from(split.chars, {
         y: 40,
-        stagger: .1,
-        duration: .2,
+        stagger: 0.1,
+        duration: 0.2,
         opacity: 0,
 
-        scrollTrigger:{
+        scrollTrigger: {
             trigger: textoUnicoSplit,
-            markers:false,
+            markers: false,
             start: "0% 80%",
-            end:"100% 50%",
+            end: "100% 50%",
             scrub: true
         }
-    })
+    });
+});
+
+const tl = gsap.timeline({
+    onComplete() {
+        gsap.to("#preloader", {
+            opacity: 0
+        })
+    }
+})
+
+tl.to("#preloader path", {
+    duration: 2,
+    strokeDashoffset: 0
+})
+
+tl.to("#preloader path", {
+    fill: rgb(168, 19, 19),
+    strokeDashoffset: 0
 })
