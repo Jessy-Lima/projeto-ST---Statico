@@ -57,6 +57,13 @@ button {
   border-bottom: 1px solid white;
 }
 
+#preloader {
+  width: 100%;
+  height: 100vh;
+  background-color: #0f0f0f;
+  position: fixed;
+}
+
 .bgMonstro {
   background-image: url("imagens/bg-sec2.webp");
   background-position: center;
