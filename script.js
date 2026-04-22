@@ -13,14 +13,19 @@ gsap.from(".hero", { // incluindo movimento na eção hero opacity @
     duration: 1
 })
 
-gsap.from("picture:nth-child(2)", { // movimento dos personagens para vertical
-    y: 60
-})
+function animarHero() {
+    gsap.from(".hero picture:nth-child(1)", {
+        y: -100,
+        duration: 1.5,
+        ease: "power3.out"
+    })
 
-gsap.from("picture:nth-child(1)", { // movimento do monstro para vertical
-    y: -60,
-    duration: 1
-})
+    gsap.from(".hero picture:nth-child(2)", {
+        y: 100,
+        duration: 1.5,
+        ease: "power3.out"
+    })
+}
 
 // Animações cards
 
@@ -85,7 +90,9 @@ grupoTextoSplit.forEach(textoUnicoSplit => {
 const tl = gsap.timeline({
     onComplete() {
         gsap.to("#preloader", {
-            opacity: 0
+            opacity: 0,
+            display: "none",
+            onComplete: animarHero
         })
     }
 })
@@ -96,6 +103,19 @@ tl.to("#preloader path", {
 })
 
 tl.to("#preloader path", {
-    fill: rgb(168, 19, 19),
+    fill: "rgb(168, 19, 19)",
     strokeDashoffset: 0
 })
+
+const audio = document.getElementById("musica");
+const botao = document.getElementById("btnAudio");
+
+botao.addEventListener("click", () => {
+    if (audio.paused) {
+        audio.play();
+        botao.innerText = "⏸ Pausar";
+    } else {
+        audio.pause();
+        botao.innerText = "▶ Tocar";
+    }
+});
